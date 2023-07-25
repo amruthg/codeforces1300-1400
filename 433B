@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+	int n;
+	cin>>n;
+	int input;
+	vector<long long> v;
+	vector<long long> u;
+	for(int i=0;i<n;i++){
+
+		cin>>input;
+		v.push_back(input);
+		u.push_back(input);
+
+	}
+
+	sort(u.begin(),u.end());
+	//prefix sum;
+	for(int i=1;i<n;i++){
+
+		v[i]+=v[i-1];
+		u[i]+=u[i-1];
+	}
+	//how to store the input
+
+	int m;
+	cin>>m;
+	int type,l,r;
+	for(int i=0;i<m;i++){
+
+		cin>>type>>l>>r;
+		if(type==1){
+			//to avoid out of bounds error when l=1;
+			if(l==1){
+
+				cout<<v[r-1]<<endl;
+			}
+			if(l!=1)
+				cout<<v[r-1]-v[l-2]<<endl;
+		}
+
+		else if(type==2){
+			if(l!=1)
+				cout<<u[r-1]-u[l-2]<<endl;
+			if(l==1)
+				cout<<u[r-1]<<endl;
+		}
+	}
+
+
+	return 0;
+}
