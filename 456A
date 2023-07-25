@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+	int n;
+	int k=0;
+	cin>>n;
+	int a,b;
+	vector<pair<int,int>> laptop;
+	for(int i=0;i<n;i++){
+
+		cin>>a>>b;
+		laptop.push_back(make_pair(a,b));
+	}
+
+	sort(laptop.begin(),laptop.end());
+	for(int i=0;i<n;i++){
+
+		if(laptop[i].second>laptop[i+1].second && i<n-1){
+			cout<<"Happy Alex";k=1;
+			break;
+		}
+	}
+
+	if(!k){
+
+		cout<<"Poor Alex";
+	}
+	return 0;
+}
